@@ -1,7 +1,7 @@
 {
   "name": "moodle-ws",
   "version": "1.0.0",
-  "description": "",
+  "description": "Moodle Web Services Client for Node js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -10,8 +10,24 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "Jlz/Lnnn/Tphr/Frn",
+  "keywords": [
+    "moodle",
+    "mdl",
+    "webservices",
+    "nodejs",
+    "javascript",
+    "typescript",
+    "moodle web services"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Julz-01/moodle-ws.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Julz-01/moodle-ws/issues"
+  },
+  "homepage": "https://github.com/Julz-01/moodle-ws#readme",
+  "author": "@Jlz@Lnnn@Tphr@Frn",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.2.4",

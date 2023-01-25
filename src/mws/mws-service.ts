@@ -30,7 +30,7 @@ export class MwsService {
 
             console.log(res)
 
-            return res;
+            return res.data['token'];
 
         } catch (err) {
 
