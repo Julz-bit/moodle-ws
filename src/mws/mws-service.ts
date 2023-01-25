@@ -28,9 +28,7 @@ export class MwsService {
 
             const res = await axios(httpConfig);
 
-            console.log(res)
-
-            return res.data['token'];
+            return res['data']['token'];
 
         } catch (err) {
 
