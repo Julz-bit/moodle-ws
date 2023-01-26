@@ -39,4 +39,27 @@ export class MwsService {
 
         }
     }
+
+    async getUser(key: string, value: string) {
+        const token = await this.generateToken();
+        const user = [{
+            key: key,
+            value: value
+        }];
+
+        const httpConfig = {
+            method: 'get',
+            url: '/webservice/rest/server.php?',
+            params: {
+                'wstoken': token,
+                'wsfunction': 'core_user_get_users',
+                'moodlewsrestformat': 'json',
+                'criteria': user
+            }
+        }
+
+        const res = await axios(httpConfig);
+
+        console.log(res['data']['users'][0])
+    }
 }
