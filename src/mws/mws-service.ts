@@ -1,6 +1,5 @@
 import axios from 'axios';
 import * as dotenv from 'dotenv';
-import { Criteria } from './interface/criteria-interface';
 
 dotenv.config();
 const controller: AbortController = new AbortController();
@@ -39,8 +38,12 @@ export class MwsService {
         }
     }
 
-    async getUsers(users: Criteria[]) {
+    async getUser(key: string, value: []) {
         const token = await this.generateToken();
+        const user = [{
+            key: key,
+            value: value
+        }];
 
         try {
             const httpConfig = {
@@ -51,14 +54,14 @@ export class MwsService {
                     'wstoken': token,
                     'wsfunction': 'core_user_get_users',
                     'moodlewsrestformat': 'json',
-                    'criteria': users
+                    'criteria': user
                 }
             }
 
             const res = await axios(httpConfig);
-            console.log(res['data']);
 
-            return res['data'];
+            console.log(res['data'])
+            return res['data']['users'];
 
         } catch (err) {
 
