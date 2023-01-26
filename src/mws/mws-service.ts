@@ -39,17 +39,8 @@ export class MwsService {
         }
     }
 
-    async getUsers(users: []) {
+    async getUsers(users: Criteria[]) {
         const token = await this.generateToken();
-
-        const criterias: Criteria[] = [];
-
-        users.map(user => {
-            criterias.push({
-                key: user['key'],
-                value: user['value']
-            })
-        })
 
         try {
             const httpConfig = {
@@ -60,7 +51,7 @@ export class MwsService {
                     'wstoken': token,
                     'wsfunction': 'core_user_get_users',
                     'moodlewsrestformat': 'json',
-                    'criteria': criterias
+                    'criteria': users
                 }
             }
 
