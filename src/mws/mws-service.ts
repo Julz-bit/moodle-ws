@@ -38,7 +38,7 @@ export class MwsService {
         }
     }
 
-    async getUser(key: string, value: []) {
+    async getUser(key: string, value: string) {
         const token = await this.generateToken();
         const user = [{
             key: key,
@@ -60,8 +60,7 @@ export class MwsService {
 
             const res = await axios(httpConfig);
 
-            console.log(res['data'])
-            return res['data']['users'];
+            return res['data']['users'][0];
 
         } catch (err) {
 
