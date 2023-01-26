@@ -56,8 +56,9 @@ export class MwsService {
             }
 
             const res = await axios(httpConfig);
+            console.log(res['data']);
 
-            return res['data']['users'];
+            return res['data'];
 
         } catch (err) {
 
