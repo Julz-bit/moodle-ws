@@ -28,8 +28,6 @@ export class MwsService {
 
             const res = await axios(httpConfig);
 
-            console.log(res['data']['token'])
-
             return res['data']['token'];
 
         } catch (err) {
@@ -47,19 +45,28 @@ export class MwsService {
             value: value
         }];
 
-        const httpConfig = {
-            method: 'get',
-            url: '/webservice/rest/server.php?',
-            baseURL: this.url,
-            params: {
-                'wstoken': token,
-                'wsfunction': 'core_user_get_users',
-                'moodlewsrestformat': 'json',
-                'criteria': user
+        try {
+            const httpConfig = {
+                method: 'get',
+                url: '/webservice/rest/server.php?',
+                baseURL: this.url,
+                params: {
+                    'wstoken': token,
+                    'wsfunction': 'core_user_get_users',
+                    'moodlewsrestformat': 'json',
+                    'criteria': user
+                }
             }
-        }
 
-        const res = await axios(httpConfig);
-        console.log(res)
+            const res = await axios(httpConfig);
+
+            return res['data']['users'][0];
+
+        } catch (err) {
+
+            console.log(err)
+            controller.abort()
+
+        }
     }
 }
