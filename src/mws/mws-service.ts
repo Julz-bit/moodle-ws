@@ -50,6 +50,7 @@ export class MwsService {
         const httpConfig = {
             method: 'get',
             url: '/webservice/rest/server.php?',
+            baseURL: this.url,
             params: {
                 'wstoken': token,
                 'wsfunction': 'core_user_get_users',
