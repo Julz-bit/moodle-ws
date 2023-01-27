@@ -1,6 +1,6 @@
 {
   "name": "moodle-ws",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Moodle Web Services Client for Node js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
