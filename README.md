@@ -24,7 +24,7 @@ $ npm i moodle-ws
     MWS_PASS="password"
     ```
 
-
+## Import via ES6 syntax
     ```js
         import { MwsService } from 'moodle-ws';
     ```
