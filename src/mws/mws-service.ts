@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as dotenv from 'dotenv';
-import { CreateUser } from './interface/create-user.interface';
+import { User } from './interface/user.interface';
 
 dotenv.config();
 const controller: AbortController = new AbortController();
@@ -61,7 +61,7 @@ export class MwsService {
         }
     }
 
-    async createUser(payload: CreateUser) {
+    async createUser(payload: User) {
         const token = await this.generateToken();
         const user = [
             {
@@ -89,6 +89,38 @@ export class MwsService {
             }
             const res = await axios(httpConfig)
             return res['data'][0];
+        } catch (err) {
+            console.log(err)
+            controller.abort()
+        }
+    }
+
+    async updateUser(payload: User) {
+        const token = await this.generateToken();
+        const user = [
+            {
+                username: payload['username'],
+                password: payload['password'],
+                firstname: payload['firstname'],
+                lastname: payload['lastname'],
+                email: payload['email']
+            }
+        ];
+
+        try {
+            const httpConfig = {
+                method: 'get',
+                baseURL: this.url,
+                url: '/webservice/rest/server.php?',
+                params: {
+                    'wstoken': token,
+                    'wsfunction': 'core_user_update_users',
+                    'moodlewsrestformat': 'json',
+                    'users': user
+                }
+            }
+            const res = await axios(httpConfig)
+            return res['data'];
         } catch (err) {
             console.log(err)
             controller.abort()
