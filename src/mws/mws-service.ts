@@ -152,8 +152,7 @@ export class MwsService {
                 }
             }
             const res = await axios(httpConfig)
-            console.log(res)
-            return res['data'];
+            return res['status'];
         } catch (err) {
             console.log(err)
             controller.abort()
@@ -180,6 +179,68 @@ export class MwsService {
                     'wsfunction': 'enrol_manual_unenrol_users',
                     'moodlewsrestformat': 'json',
                     'enrolments': enrollment
+                }
+            }
+            const res = await axios(httpConfig)
+            return res['status'];
+        } catch (err) {
+            console.log(err)
+            controller.abort()
+        }
+    }
+
+    async createCategory(payload: Payload) {
+        const token = await this.generateToken();
+        const category = [
+            {
+                name: payload['name'],
+                parent: payload['parent'],
+                description: payload['description']
+            }
+        ];
+
+        try {
+            const httpConfig = {
+                method: 'get',
+                baseURL: this.url,
+                url: '/webservice/rest/server.php?',
+                params: {
+                    'wstoken': token,
+                    'wsfunction': 'core_course_create_categories',
+                    'moodlewsrestformat': 'json',
+                    'categories': category
+                }
+            }
+            const res = await axios(httpConfig)
+            console.log(res)
+            return res['data'];
+        } catch (err) {
+            console.log(err)
+            controller.abort()
+        }
+    }
+
+    async createCourse(payload: Payload) {
+        const token = await this.generateToken();
+        const course = [
+            {
+                fullname: payload['fullname'],
+                categoryid: payload['categoryid'],
+                shortname: payload['shortname'],
+                summary: payload['summary']
+            }
+        ];
+
+        try {
+            const httpConfig = {
+                method: 'get',
+                baseURL: this.url,
+                url: '/webservice/rest/server.php?',
+                params: {
+                    'wstoken': token,
+                    'wsfunction': 'core_course_create_courses',
+                    'moodlewsrestformat': 'json',
+                    'courses': course
                 }
             }
             const res = await axios(httpConfig)
