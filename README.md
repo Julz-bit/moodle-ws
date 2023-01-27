@@ -130,3 +130,7 @@ $ npm i moodle-ws
 ## Stay in touch
 
 - Author - Jlz/Rdgjr/Lnnn/Tphr/Frn/Rnld
+
+## Final Toughts
+
+- Crying while coding is normal!
