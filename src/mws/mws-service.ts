@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as dotenv from 'dotenv';
+import { CreateUser } from './interface/create-user.interface';
 
 dotenv.config();
 const controller: AbortController = new AbortController();
@@ -18,29 +19,24 @@ export class MwsService {
 
     async generateToken(): Promise<any> {
         try {
-
             const httpConfig = {
                 method: 'get',
-                url: `/login/token.php?username=${this.user}&password=${this.pass}&service=moodle_mobile_app`,
                 baseURL: this.url,
+                url: `/login/token.php?username=${this.user}&password=${this.pass}&service=moodle_mobile_app`,
                 signal: controller.signal
             }
 
             const res = await axios(httpConfig);
-
             return res['data']['token'];
-
         } catch (err) {
-
             console.log(err)
             controller.abort()
-
         }
     }
 
     async getUser(key: string, value: string) {
         const token = await this.generateToken();
-        const user = [{
+        const criteria = [{
             key: key,
             value: value
         }];
@@ -48,25 +44,55 @@ export class MwsService {
         try {
             const httpConfig = {
                 method: 'get',
-                url: '/webservice/rest/server.php?',
                 baseURL: this.url,
+                url: '/webservice/rest/server.php?',
                 params: {
                     'wstoken': token,
                     'wsfunction': 'core_user_get_users',
                     'moodlewsrestformat': 'json',
-                    'criteria': user
+                    'criteria': criteria
                 }
             }
-
             const res = await axios(httpConfig);
-
             return res['data']['users'][0];
-
         } catch (err) {
-
             console.log(err)
             controller.abort()
+        }
+    }
 
+    async createUser(payload: CreateUser) {
+        const token = await this.generateToken();
+        const user = [
+            {
+                username: payload['username'],
+                password: payload['password'],
+                firstname: payload['firstname'],
+                lastname: payload['lastname'],
+                email: payload['lastname'],
+                country: payload['country'],
+                lang: payload['lang']
+            }
+        ];
+
+        try {
+            const httpConfig = {
+                method: 'get',
+                baseURL: this.url,
+                url: '/webservice/rest/server.php?',
+                params: {
+                    'wstoken': token,
+                    'wsfunction': 'core_user_create_users',
+                    'moodlewsrestformat': 'json',
+                    'users': user
+                }
+            }
+            const res = await axios(httpConfig)
+            console.log(res)
+
+        } catch (err) {
+            console.log(err)
+            controller.abort()
         }
     }
 }
