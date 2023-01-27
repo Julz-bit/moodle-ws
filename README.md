@@ -25,6 +25,10 @@ $ npm i moodle-ws
     ```
 
 ## Import via ES6 syntax
+
+
+
+
     ```js
         import { MwsService } from 'moodle-ws';
     ```
