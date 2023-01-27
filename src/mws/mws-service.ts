@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as dotenv from 'dotenv';
-import { User } from './interface/user.interface';
+import { Payload } from './interface/payload.interface';
 
 dotenv.config();
 const controller: AbortController = new AbortController();
@@ -61,7 +61,7 @@ export class MwsService {
         }
     }
 
-    async createUser(payload: User) {
+    async createUser(payload: Payload) {
         const token = await this.generateToken();
         const user = [
             {
@@ -95,7 +95,7 @@ export class MwsService {
         }
     }
 
-    async updateUser(payload: User) {
+    async updateUser(payload: Payload) {
         const token = await this.generateToken();
         const user = [
             {
@@ -118,6 +118,67 @@ export class MwsService {
                     'wsfunction': 'core_user_update_users',
                     'moodlewsrestformat': 'json',
                     'users': user
+                }
+            }
+            const res = await axios(httpConfig)
+            return res['data'];
+        } catch (err) {
+            console.log(err)
+            controller.abort()
+        }
+    }
+
+    async enrollUser(payload: Payload) {
+        const token = await this.generateToken();
+        const enrollment = [
+            {
+                roleid: payload['roleId'],
+                userid: payload['moodleId'],
+                courseid: payload['courseId'],
+                suspend: 0
+            }
+        ];
+
+        try {
+            const httpConfig = {
+                method: 'get',
+                baseURL: this.url,
+                url: '/webservice/rest/server.php?',
+                params: {
+                    'wstoken': token,
+                    'wsfunction': 'enrol_manual_enrol_users',
+                    'moodlewsrestformat': 'json',
+                    'enrolments': enrollment
+                }
+            }
+            const res = await axios(httpConfig)
+            return res['data'];
+        } catch (err) {
+            console.log(err)
+            controller.abort()
+        }
+    }
+
+    async unEnrollUser(payload: Payload) {
+        const token = await this.generateToken();
+        const enrollment = [
+            {
+                roleid: payload['roleId'],
+                userid: payload['moodleId'],
+                courseid: payload['courseId'],
+            }
+        ];
+
+        try {
+            const httpConfig = {
+                method: 'get',
+                baseURL: this.url,
+                url: '/webservice/rest/server.php?',
+                params: {
+                    'wstoken': token,
+                    'wsfunction': 'enrol_manual_unenrol_users',
+                    'moodlewsrestformat': 'json',
+                    'enrolments': enrollment
                 }
             }
             const res = await axios(httpConfig)
