@@ -88,8 +88,7 @@ export class MwsService {
                 }
             }
             const res = await axios(httpConfig)
-            console.log(res)
-
+            return res['data'];
         } catch (err) {
             console.log(err)
             controller.abort()
