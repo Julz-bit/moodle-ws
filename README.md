@@ -29,12 +29,11 @@ $ npm i moodle-ws
 
 
 
-    ```js
-        import { MwsService } from 'moodle-ws';
-    ```
-
-
 ## Stay in touch
 
 - Author - Jlz/Rdgjr/Lnnn/Tphr/Frn/Rnld
 
+
+    ```js
+        import { MwsService } from 'moodle-ws';
+    ```
