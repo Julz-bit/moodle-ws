@@ -1,3 +1,3 @@
 export interface User {
-    [key: string]: string;
+    [key: string | number]: string | number;
 }

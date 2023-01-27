@@ -99,6 +99,7 @@ export class MwsService {
         const token = await this.generateToken();
         const user = [
             {
+                id: payload['id'],
                 username: payload['username'],
                 password: payload['password'],
                 firstname: payload['firstname'],
