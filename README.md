@@ -24,21 +24,21 @@ $ npm i moodle-ws
     ```
 
 ## Import via ES6 syntax
-    ```typescript
+    ```javascript
         import { MwsService } from 'moodle-ws';
     ```
 
 ## Sample Usage of Moodle Web Service
     Use the MwsService to get a new intance.
 
-    ```typescript
+    ```javascript
         const mws = new MwsService();
     ```
 
     • createUser Service
       create an object that contains required params example below
 
-    ```typescript
+    ```javascript
         const user = {
             username: 'jlzcrn3',
             password: 'samplepass',
@@ -55,7 +55,7 @@ $ npm i moodle-ws
     • getUser Service 
       will return specific user using (key, value)
 
-    ```typescript
+    ```javascript
         //will return specific user using (key, value)
         return await mws.getUser('email', 'jlzcrn3@gmail.com')
     ```
@@ -63,7 +63,7 @@ $ npm i moodle-ws
     • updateUser Service
       create an object that contains required params example below
 
-    ```typescript
+    ```javascript
         const user = {
             id: 1,
             username: 'jlzcrn3',
@@ -81,7 +81,7 @@ $ npm i moodle-ws
     • createCategory Service
       create Course category
 
-    ```typescript
+    ```javascript
         const category = {
             name: 'MWS Category',
             parent: 0, // Note: if you want to put your category in top level use 0 as value but if it's under sub category pass the value of parent category id.
@@ -95,7 +95,7 @@ $ npm i moodle-ws
     • createCourse Service
       create Course under course category
 
-    ```typescript
+    ```javascript
         const course = {
             fullname: 'MWS Course', // course name
             categoryid: 17, // parent category id
@@ -110,7 +110,7 @@ $ npm i moodle-ws
     • enrollUser Service
       enroll user 
 
-    ```typescript
+    ```javascript
         const enrollment = {
             roleId: 5, // Note: roleid depends on your moodle roles
             moodleId: 1, // pass the moodle Id of the user, This is the moodle user id in your app 
@@ -124,7 +124,7 @@ $ npm i moodle-ws
     • unEnrollUser Service
       unenroll user
 
-    ```typescript
+    ```javascript
         const unenroll = {
             roleId: 5, // in our Moodle the value of 5 is student
             moodleId: 1, // pass the moodle Id of the user, This is the moodle user id in your app 
