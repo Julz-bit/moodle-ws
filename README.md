@@ -25,15 +25,14 @@ $ npm i moodle-ws
     ```
 
 ## Usage
-Import via ES6 syntax
+- Import via ES6 syntax
 
 
     ```typescript
         const mws = new MwsService();
     ```
 
-- createUser Service
-  create an object that contains required params example below
+- createUser Service (create an object that contains required params example below)
 
 
     ```typescript
@@ -50,8 +49,7 @@ Import via ES6 syntax
         return await mws.createUser(user)
     ```
 
-- getUser Service 
-  will return specific user using (key, value)
+- getUser Service (will return specific user using (key, value))
 
 
     ```typescript
@@ -59,8 +57,7 @@ Import via ES6 syntax
         return await mws.getUser('email', 'jlzcrn3@gmail.com')
     ```
 
-- updateUser Service
-  create an object that contains required params example below
+- updateUser Service (create an object that contains required params example below)
 
 
     ```typescript
@@ -77,8 +74,7 @@ Import via ES6 syntax
         return await updateUser(user)
     ```
 
-- createCategory Service
-  create Course category
+- createCategory Service 
 
 
     ```typescript
@@ -91,8 +87,7 @@ Import via ES6 syntax
         return await mws.createCategory(category)
     ```
 
-- createCourse Service
-  create Course under course category
+- createCourse Service (create Course under course category)
 
 
     ```typescript
@@ -107,7 +102,6 @@ Import via ES6 syntax
     ```
 
 - enrollUser Service
-  enroll user 
 
 
     ```typescript
@@ -121,7 +115,6 @@ Import via ES6 syntax
     ```
 
 - unEnrollUser Service
-  unenroll user
 
 
     ```typescript
