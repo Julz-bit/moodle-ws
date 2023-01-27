@@ -69,7 +69,7 @@ export class MwsService {
                 password: payload['password'],
                 firstname: payload['firstname'],
                 lastname: payload['lastname'],
-                email: payload['lastname'],
+                email: payload['email'],
                 country: payload['country'],
                 lang: payload['lang']
             }
