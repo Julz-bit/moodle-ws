@@ -25,7 +25,6 @@ export class MwsService {
                 url: `/login/token.php?username=${this.user}&password=${this.pass}&service=moodle_mobile_app`,
                 signal: controller.signal
             }
-
             const res = await axios(httpConfig);
             return res['data']['token'];
         } catch (err) {
@@ -40,7 +39,6 @@ export class MwsService {
             key: key,
             value: value
         }];
-
         try {
             const httpConfig = {
                 method: 'get',
@@ -74,7 +72,6 @@ export class MwsService {
                 lang: payload['lang']
             }
         ];
-
         try {
             const httpConfig = {
                 method: 'get',
@@ -107,7 +104,6 @@ export class MwsService {
                 email: payload['email']
             }
         ];
-
         try {
             const httpConfig = {
                 method: 'get',
@@ -138,7 +134,6 @@ export class MwsService {
                 suspend: 0
             }
         ];
-
         try {
             const httpConfig = {
                 method: 'get',
@@ -168,7 +163,6 @@ export class MwsService {
                 courseid: payload['courseId'],
             }
         ];
-
         try {
             const httpConfig = {
                 method: 'get',
@@ -198,7 +192,6 @@ export class MwsService {
                 description: payload['description']
             }
         ];
-
         try {
             const httpConfig = {
                 method: 'get',
@@ -212,10 +205,8 @@ export class MwsService {
                 }
             }
             const res = await axios(httpConfig)
-            console.log(res)
             return res['data'];
         } catch (err) {
-            console.log(err)
             controller.abort()
         }
     }
@@ -230,7 +221,6 @@ export class MwsService {
                 summary: payload['summary']
             }
         ];
-
         try {
             const httpConfig = {
                 method: 'get',
@@ -244,7 +234,6 @@ export class MwsService {
                 }
             }
             const res = await axios(httpConfig)
-            console.log(res)
             return res['data'];
         } catch (err) {
             console.log(err)
