@@ -23,13 +23,14 @@ $ npm i moodle-ws
     MWS_PASS="password"
     ```
 
-## Import via ES6 syntax
-
-    ```javascript
-        import { MwsService } from 'moodle-ws';
-    ```
+# Import via ES6 syntax
 
 ## Stay in touch
 
 - Author - Jlz/Rdgjr/Lnnn/Tphr/Frn/Rnld
 
+
+
+    ```js
+        import { MwsService } from 'moodle-ws';
+    ```
