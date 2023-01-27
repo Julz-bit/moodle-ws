@@ -11,6 +11,7 @@ $ npm i moodle-ws
 ## Environment/Setup
 1. Create .env file in your root folder.
 2. Add configuration and credentials
+
    ```bash
     MWS_URL=""
     MWS_USER=""
@@ -22,8 +23,6 @@ $ npm i moodle-ws
     MWS_USER="username"
     MWS_PASS="password"
     ```
-
-## Import via ES6 syntax
 
 
     ```js
