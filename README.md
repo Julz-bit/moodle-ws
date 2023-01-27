@@ -53,7 +53,7 @@ $ npm i moodle-ws
 
 
     ```typescript
-        //will return specific user using (key, value)
+        //key = 'email' && value = 'jlzcrn3@gmail.com', Note: you can use other key like username etc..
         return await mws.getUser('email', 'jlzcrn3@gmail.com')
     ```
 
