@@ -1,6 +1,6 @@
 ## Description
 
-Moodle Web Services (Core Api's) wrapper for nodejs.
+Moodle Web Services (Core Api's) wrapper for nodejs. Written in TypeScript.
 
 ## Installation
 
@@ -29,6 +29,9 @@ $ npm i moodle-ws
 
 
     ```typescript
+        import { MwsService } from 'moodle-ws';
+
+        //call a new instance
         const mws = new MwsService();
     ```
 
