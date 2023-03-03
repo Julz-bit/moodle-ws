@@ -211,6 +211,35 @@ export class MwsService {
         }
     }
 
+    async updateCategory(payload: Payload) {
+        const token = await this.generateToken();
+        const category = [
+            {
+                id: payload['id'],
+                name: payload['name'],
+                visible: payload['visible']
+            }
+        ];
+        try {
+            const httpConfig = {
+                method: 'get',
+                baseURL: this.url,
+                url: '/webservice/rest/server.php?',
+                params: {
+                    'wstoken': token,
+                    'wsfunction': 'core_course_update_categories',
+                    'moodlewsrestformat': 'json',
+                    'categories': category
+                }
+            }
+            const res = await axios(httpConfig)
+            return res['data'];
+        } catch (err) {
+            console.log(err)
+            controller.abort()
+        }
+    }
+
     async createCourse(payload: Payload) {
         const token = await this.generateToken();
         const course = [
@@ -229,6 +258,35 @@ export class MwsService {
                 params: {
                     'wstoken': token,
                     'wsfunction': 'core_course_create_courses',
+                    'moodlewsrestformat': 'json',
+                    'courses': course
+                }
+            }
+            const res = await axios(httpConfig)
+            return res['data'];
+        } catch (err) {
+            console.log(err)
+            controller.abort()
+        }
+    }
+
+    async updateCourse(payload: Payload) {
+        const token = await this.generateToken();
+        const course = [
+            {
+                id: payload['id'],
+                fullname: payload['fullname'],
+                visible: payload['visible']
+            }
+        ];
+        try {
+            const httpConfig = {
+                method: 'get',
+                baseURL: this.url,
+                url: '/webservice/rest/server.php?',
+                params: {
+                    'wstoken': token,
+                    'wsfunction': 'core_course_update_courses',
                     'moodlewsrestformat': 'json',
                     'courses': course
                 }
