@@ -216,7 +216,8 @@ export class MwsService {
         const category = [
             {
                 id: payload['id'],
-                name: payload['name']
+                name: payload['name'],
+                description: payload['description']
             }
         ];
         try {
@@ -232,7 +233,7 @@ export class MwsService {
                 }
             }
             const res = await axios(httpConfig)
-            return res;
+            return res['status'];
         } catch (err) {
             console.log(err)
             controller.abort()

@@ -90,6 +90,19 @@ $ npm i moodle-ws
         return await mws.createCategory(category)
     ```
 
+- updateCategory Service 
+
+
+    ```typescript
+        const category = {
+            id: 17,
+            name: 'MWS Updated Category',
+            description: 'Moodle Web Services Updated Category'
+        }
+        //expected return is 200 if the update was success
+        return await mws.updateCategory(category)
+    ```
+
 - createCourse Service (create Course under course category)
 
 
@@ -102,6 +115,19 @@ $ npm i moodle-ws
         }
         //expected return [{ "id": 18, "shortname": "MWSC"}]
         return await mws.createCourse(course)
+    ```
+
+- updateCourse Service
+
+
+    ```typescript
+        const course = {
+            id: 18,
+            fullname: 'MWS Updated Course', // course name
+        }
+        //expected return { warnings: [] }
+        //if warnings are empty means course updated successfully
+        return await mws.updateCourse(course)
     ```
 
 - enrollUser Service
