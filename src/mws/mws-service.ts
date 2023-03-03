@@ -216,8 +216,7 @@ export class MwsService {
         const category = [
             {
                 id: payload['id'],
-                name: payload['name'],
-                visible: payload['visible']
+                name: payload['name']
             }
         ];
         try {
@@ -275,8 +274,7 @@ export class MwsService {
         const course = [
             {
                 id: payload['id'],
-                fullname: payload['fullname'],
-                visible: payload['visible']
+                fullname: payload['fullname']
             }
         ];
         try {
