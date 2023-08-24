@@ -10,11 +10,13 @@ export class MwsService {
     protected url: string;
     protected user: string;
     protected pass: string;
+    protected service: string;
 
     constructor() {
         this.url = process.env.MWS_URL,
             this.user = process.env.MWS_USER,
-            this.pass = process.env.MWS_PASS
+            this.pass = process.env.MWS_PASS,
+            this.service = process.env.MWS_SERVICE
     }
 
     async generateToken(): Promise<any> {
@@ -22,7 +24,7 @@ export class MwsService {
             const httpConfig = {
                 method: 'get',
                 baseURL: this.url,
-                url: `/login/token.php?username=${this.user}&password=${this.pass}&service=moodle_mobile_app`,
+                url: `/login/token.php?username=${this.user}&password=${this.pass}&service=${this.service}`,
                 signal: controller.signal
             }
             const res = await axios(httpConfig);
@@ -234,6 +236,35 @@ export class MwsService {
             }
             const res = await axios(httpConfig)
             return res['status'];
+        } catch (err) {
+            console.log(err)
+            controller.abort()
+        }
+    }
+
+    async deleteCategory(payload: Payload) {
+        const token = await this.generateToken();
+        const category = [
+            {
+                id: payload['id'],
+                newparent: payload['newparent']
+            }
+        ];
+        try {
+            const httpConfig = {
+                method: 'get',
+                baseURL: this.url,
+                url: '/webservice/rest/server.php?',
+                params: {
+                    'wstoken': token,
+                    'wsfunction': 'core_course_delete_categories',
+                    'moodlewsrestformat': 'json',
+                    'categories': category
+                }
+            }
+            const res = await axios(httpConfig)
+            console.log(res)
+            return res;
         } catch (err) {
             console.log(err)
             controller.abort()
