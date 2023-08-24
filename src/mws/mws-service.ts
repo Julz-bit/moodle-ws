@@ -32,6 +32,7 @@ export class MwsService {
         } catch (err) {
             console.log(err)
             controller.abort()
+            return err;
         }
     }
 
@@ -58,6 +59,7 @@ export class MwsService {
         } catch (err) {
             console.log(err)
             controller.abort()
+            return err;
         }
     }
 
@@ -91,6 +93,7 @@ export class MwsService {
         } catch (err) {
             console.log(err)
             controller.abort()
+            return err;
         }
     }
 
@@ -123,6 +126,7 @@ export class MwsService {
         } catch (err) {
             console.log(err)
             controller.abort()
+            return err;
         }
     }
 
@@ -153,6 +157,7 @@ export class MwsService {
         } catch (err) {
             console.log(err)
             controller.abort()
+            return err;
         }
     }
 
@@ -182,6 +187,7 @@ export class MwsService {
         } catch (err) {
             console.log(err)
             controller.abort()
+            return err;
         }
     }
 
@@ -209,7 +215,9 @@ export class MwsService {
             const res = await axios(httpConfig)
             return res['data'];
         } catch (err) {
+            console.log(err)
             controller.abort()
+            return err;
         }
     }
 
@@ -239,6 +247,7 @@ export class MwsService {
         } catch (err) {
             console.log(err)
             controller.abort()
+            return err;
         }
     }
 
@@ -298,6 +307,7 @@ export class MwsService {
         } catch (err) {
             console.log(err)
             controller.abort()
+            return err;
         }
     }
 
@@ -326,6 +336,7 @@ export class MwsService {
         } catch (err) {
             console.log(err)
             controller.abort()
+            return err;
         }
     }
 }
