@@ -20,11 +20,12 @@ export class MwsService {
     }
 
     async generateToken(): Promise<any> {
+        const service = this.service ? this.service : 'moodle_mobile_app';
         try {
             const httpConfig = {
                 method: 'get',
                 baseURL: this.url,
-                url: `/login/token.php?username=${this.user}&password=${this.pass}&service=${this.service}`,
+                url: `/login/token.php?username=${this.user}&password=${this.pass}&service=${service}`,
                 signal: controller.signal
             }
             const res = await axios(httpConfig);
